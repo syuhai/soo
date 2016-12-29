@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#20cdff</item>
+        <item name="colorPrimaryDark">#e5004f</item>
+        <item name="colorAccent">#e5004f</item>
+        <item name="android:listDivider">@drawable/listdivider</item>
+    </style>
+
+</resources>
