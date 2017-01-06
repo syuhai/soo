@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.android.dingtalk.share.ddsharemodule.DDShareApiFactory;
+import com.android.dingtalk.share.ddsharemodule.IDDShareApi;
+import com.android.dingtalk.share.ddsharemodule.message.DDMediaMessage;
+import com.android.dingtalk.share.ddsharemodule.message.DDWebpageMessage;
+import com.android.dingtalk.share.ddsharemodule.message.SendMessageToDD;
 import com.soo.learn.BaseCommonAdapter.CommBaseAdapter;
 import com.soo.learn.BaseCommonAdapter.ViewHolder;
 import com.soo.learn.favoranimation.AnimationActivity;
@@ -16,6 +21,7 @@ import com.soo.learn.favoranimation.FavorAnimationActivity;
 import com.soo.learn.floatview.FloatVewActivity;
 import com.soo.learn.recylerview.RecyclerViewActivity;
 import com.soo.learn.util.JumpUtil;
+import com.soo.learn.util.T;
 import com.soo.learn.view.ProgressView;
 
 import java.lang.reflect.Field;
@@ -50,6 +56,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 itemList.add("视图Animation "+i);
             }else if(i==4){
                 itemList.add("属性Animation "+i);
+            }else if(i==5){
+                itemList.add("分享到钉钉 "+i);
+            }else if(i==6){
+                itemList.add("文件重命名测试 "+i);
             }else{
                 itemList.add("adapter  "+i);
             }
@@ -95,6 +105,46 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
            JumpUtil.JumpToActivity(MainActivity.this,AnimationActivity.class);
        }else if(i==4){
            JumpUtil.JumpToActivity(MainActivity.this, AnimatorActivity.class);
+       }else if(i==5){
+           shareToDingding();
+       }else if(i==6){
+           JumpUtil.JumpToActivity(MainActivity.this,RenameFileActivity.class);
        }
+    }
+
+    private void shareToDingding() {
+        IDDShareApi iddShareApi = DDShareApiFactory.createDDShareApi(this, Constant.APP_ID, true);
+        boolean isInstalled = iddShareApi.isDDAppInstalled();
+        if(!isInstalled){
+            T.showShort(this,"请先安装钉钉");
+            return;
+        }
+        boolean isSupport = iddShareApi.isDDSupportAPI();
+        if(!isSupport){
+            T.showShort(this,"所钉钉版本不支持分享，请先升级");
+            return;
+        }
+        //初始化一个DDWebpageMessage并填充网页链接地址
+        DDWebpageMessage webPageObject = new DDWebpageMessage();
+        webPageObject.mUrl = "https://www.hao123.com/?tn=97974706_hao_pg";
+
+        //构造一个DDMediaMessage对象
+        DDMediaMessage webMessage = new DDMediaMessage();
+        webMessage.mMediaObject = webPageObject;
+
+        //填充网页分享必需参数，开发者需按照自己的数据进行填充
+        webMessage.mTitle = "测试标题";
+        webMessage.mContent = "能分享了啊 ，赶快试试";
+        webMessage.mThumbUrl = "http://d.ifengimg.com/mw978_mh598/p3.ifengimg.com/cmpp/2017/01/04/10/f6793def-2a1d-43e4-a4e1-23705185ee8c_size511_w1000_h640.jpg";
+        // 网页分享的缩略图也可以使用bitmap形式传输
+        // webMessage.setThumbImage(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+
+        //构造一个Req
+        SendMessageToDD.Req webReq = new SendMessageToDD.Req();
+        webReq.mMediaMessage = webMessage;
+//      webReq.transaction = buildTransaction("webpage");
+
+        //调用api接口发送消息到支付宝
+        iddShareApi.sendReq(webReq);
     }
 }

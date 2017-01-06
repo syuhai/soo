@@ -155,6 +155,7 @@ public class AnimatorActivity extends Activity implements View.OnClickListener{
     }
 
     private void beginScaleAnimation() {
+
         ObjectAnimator animO=new ObjectAnimator();
         animO.ofFloat(animIv,"scaleX",1,2).setDuration(3000).start();
         ObjectAnimator animM=new ObjectAnimator();

@@ -13,10 +13,14 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 /**
  * 文件工具类  获取目录 删除目录
@@ -41,6 +45,52 @@ public class FileUtils {
 		return new File(cachePath + File.separator + uniqueName);
 	}
 
+	/**
+	 * 将信息写到固定文件
+	 * @param filePath
+	 * @param data
+	 * @param isAppend  是否增量写入  true 是 ，false  不是，默认false
+	 */
+	public static void writeFile(String filePath, String data,boolean isAppend){
+		File targetFile = new File(filePath);
+		File dir = targetFile ;
+		if( !targetFile.isDirectory() ){
+			dir = targetFile.getParentFile();
+		}
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		OutputStreamWriter output = null ;
+		BufferedReader buffer = null ;
+		String line;
+		try{
+			output = new OutputStreamWriter(new FileOutputStream(targetFile,isAppend));
+			buffer = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(data.getBytes())));
+			while ((line = buffer.readLine()) != null) {
+				output.write(line);
+			}
+			output.flush();
+
+		}catch(Exception e){
+		}finally{
+			if( output != null ){
+				try {
+					output.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if( buffer != null ){
+				try {
+					buffer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 	/**
 	 * 获取可以使用的缓存目录,如果有内存卡，优先使用内存卡，否则使用手机自带存储空间。
