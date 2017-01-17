@@ -6,4 +6,9 @@
         <attr name="dot_count" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="custom">
+        <attr name="test" format="string"/>
+        <attr name="testAttr" format="integer"/>
+    </declare-styleable>
+
 </resources>

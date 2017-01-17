@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:soo="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.soo.learn.customview.CustomView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        soo:test="测试名字"
+        soo:testAttr="1234"
+        />
+</LinearLayout>

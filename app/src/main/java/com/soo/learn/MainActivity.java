@@ -59,6 +59,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             }else if(i==5){
                 itemList.add("分享到钉钉 "+i);
             }else if(i==6){
+                itemList.add("自定义view "+i);
+            }else if(i==7){
                 itemList.add("文件重命名测试 "+i);
             }else{
                 itemList.add("adapter  "+i);
@@ -107,7 +109,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
            JumpUtil.JumpToActivity(MainActivity.this, AnimatorActivity.class);
        }else if(i==5){
            shareToDingding();
-       }else if(i==6){
+       } else if(i==6){
+           JumpUtil.JumpToActivity(MainActivity.this,CustomActivity.class);
+       }else if(i==7){
            JumpUtil.JumpToActivity(MainActivity.this,RenameFileActivity.class);
        }
     }

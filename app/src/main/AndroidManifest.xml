@@ -44,6 +44,7 @@
         <activity android:name=".favoranimation.AnimatorActivity"></activity>
         <activity android:name=".favoranimation.AnimatorEvalutorActivity"></activity>
         <activity android:name=".RenameFileActivity"></activity>
+        <activity android:name=".CustomActivity"></activity>
         <!--钉钉分享start-->
         <activity
             android:exported="true"
