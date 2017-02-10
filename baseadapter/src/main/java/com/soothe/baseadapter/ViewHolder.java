@@ -1,4 +1,4 @@
-package com.soo.learn.BaseCommonAdapter;
+package com.soothe.baseadapter;
 
 import android.content.Context;
 import android.util.SparseArray;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class ViewHolder {
     private View convertView;
     private SparseArray<View> subViews;
-    private ViewHolder(Context context,int resId){
+    private ViewHolder(Context context, int resId){
        convertView= LayoutInflater.from(context).inflate(resId,null);
        convertView.setTag(this);
        subViews=new SparseArray<>();

@@ -1,7 +1,7 @@
 package com.soo.learn;
 
-import com.soo.learn.BaseCommonAdapter.CommBaseAdapter;
-import com.soo.learn.BaseCommonAdapter.ViewHolder;
+import com.soothe.baseadapter.CommBaseAdapter;
+import com.soothe.baseadapter.ViewHolder;
 
 import java.util.List;
 

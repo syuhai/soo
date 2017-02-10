@@ -1,4 +1,4 @@
-package com.soo.learn.BaseCommonAdapter;
+package com.soothe.baseadapter;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ public abstract class CommBaseAdapter<T> extends BaseAdapter {
     protected int layoutId=-1;
     public CommBaseAdapter(){
     }
-    public CommBaseAdapter(List<T> itemList,int layoutId){
+    public CommBaseAdapter(List<T> itemList, int layoutId){
         this.itemList=itemList;
         this.layoutId=layoutId;
     }

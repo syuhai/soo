@@ -13,8 +13,7 @@ import com.android.dingtalk.share.ddsharemodule.IDDShareApi;
 import com.android.dingtalk.share.ddsharemodule.message.DDMediaMessage;
 import com.android.dingtalk.share.ddsharemodule.message.DDWebpageMessage;
 import com.android.dingtalk.share.ddsharemodule.message.SendMessageToDD;
-import com.soo.learn.BaseCommonAdapter.CommBaseAdapter;
-import com.soo.learn.BaseCommonAdapter.ViewHolder;
+import com.soo.learn.dagger2.DaggerActivity;
 import com.soo.learn.favoranimation.AnimationActivity;
 import com.soo.learn.favoranimation.AnimatorActivity;
 import com.soo.learn.favoranimation.FavorAnimationActivity;
@@ -23,6 +22,8 @@ import com.soo.learn.recylerview.RecyclerViewActivity;
 import com.soo.learn.util.JumpUtil;
 import com.soo.learn.util.T;
 import com.soo.learn.view.ProgressView;
+import com.soothe.baseadapter.CommBaseAdapter;
+import com.soothe.baseadapter.ViewHolder;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -62,6 +63,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 itemList.add("自定义view "+i);
             }else if(i==7){
                 itemList.add("文件重命名测试 "+i);
+            }else if(i==8){
+                itemList.add("注解dagger2 "+i);
             }else{
                 itemList.add("adapter  "+i);
             }
@@ -113,6 +116,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
            JumpUtil.JumpToActivity(MainActivity.this,CustomActivity.class);
        }else if(i==7){
            JumpUtil.JumpToActivity(MainActivity.this,RenameFileActivity.class);
+       }else if(i==8){
+           JumpUtil.JumpToActivity(MainActivity.this,DaggerActivity.class);
        }
     }
 

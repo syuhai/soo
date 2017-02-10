@@ -7,8 +7,15 @@
     </declare-styleable>
 
     <declare-styleable name="custom">
-        <attr name="test" format="string"/>
-        <attr name="testAttr" format="integer"/>
+        <attr name="drawable_src" format="reference"/>
+        <attr name="drawable_height" format="dimension"/>
+        <attr name="drawable_width" format="dimension"/>
+        <attr name="drawable_location">
+            <enum name="left" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="right" value="3"/>
+            <enum name="bottom" value="4"/>
+        </attr>
     </declare-styleable>
 
 </resources>

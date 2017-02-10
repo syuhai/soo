@@ -2,11 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:soo="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="@color/color_00c2f2"
     android:layout_height="match_parent">
-    <com.soo.learn.customview.CustomView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        soo:test="测试名字"
-        soo:testAttr="1234"
+    <com.soo.learn.customview.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:id="@+id/custom"
+        android:textSize="13.3sp"
+        android:textColor="@color/color_e5004f"
+        soo:drawable_location="left"
+        android:drawablePadding="3dp"
+        android:gravity="center"
+        android:text="￥75.00"
+        android:padding="10dp"
+        />
+    <!--soo:drawable_src="@mipmap/phone_micro"-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="￥75.00"
+        android:background="@color/white"
+        android:textSize="13.3sp"
+        android:textColor="@color/color_e5004f"
+        android:padding="10dp"
+        android:id="@+id/drawable"
         />
 </LinearLayout>
